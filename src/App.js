@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
 import {Table, OverallTable, LabelTable} from './Table';
 import openSocket from 'socket.io-client';
+import hyperloop_logo from './hyperloop_logo.png';
+import TI_logo from './TI_logo.png';
 
+//mappings for string parsing in updateCell
 var tableNumbers = {
     "B1": 0,
     "B2": 1,
@@ -33,6 +36,22 @@ function updateValue(d)
     var val = parseFloat(data.split(':')[1]);
 
     window.appComponent.updateCell(val_name, val);
+}
+
+//onClick functionalities for custom buttons
+function killSystem()
+{
+    alert("KILL SYSTEMS!");
+}
+
+function clearStats()
+{
+    alert("CLEAR STATS!");
+}
+
+function downloadLogs()
+{
+    alert("DOWNLOAD LOGS!");
 }
 
 class App extends Component {
@@ -211,7 +230,7 @@ class App extends Component {
 
     //handleSubmit function used by button as a functionality test method for the updateValue function
     handleSubmit(event) {
-        updateValue(0,1,56);
+        alert("ALERT!");
     }
 
     render() {

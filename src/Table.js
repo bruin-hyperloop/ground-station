@@ -1,18 +1,6 @@
 import React, {Component} from 'react';
 import {LabelCell, StaticCell, DynamicCell} from './Cell';
 
-/*
-    TODO:
-    Need to separate Live and Overall Tables into two separate components.
-    Implementations for the Overall Table has been started, basing it off of
-    the implementation for the Live Tables. NEED to make sure the values being
-    passed through components are being done properly. Shouldn't be passing in
-    "minValues" or "maxValues", but instead be passing in one 2D "values" array.
-    This will make rendering them easier (can use a for loop with a general
-    "DynamicCell" component like we had before for the min/max Static Cells
-    for the Live Tables.)
-*/
-
 class Table extends Component {
     constructor(props) {
         super(props);
