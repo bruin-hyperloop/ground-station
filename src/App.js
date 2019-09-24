@@ -1,7 +1,12 @@
+//Updated 9-23-19
+
 import React, {Component} from 'react';
 import {Table, OverallTable, LabelTable} from './Table';
 import openSocket from 'socket.io-client';
+import hyperloop_logo from './hyperloop_logo.png';
+import TI_logo from './TI_logo.png';
 
+//mappings for string parsing in updateCell
 var tableNumbers = {
     "B1": 0,
     "B2": 1,
@@ -33,6 +38,22 @@ function updateValue(d)
     var val = parseFloat(data.split(':')[1]);
 
     window.appComponent.updateCell(val_name, val);
+}
+
+//onClick functionalities for custom buttons
+function killSystem()
+{
+    alert("KILL SYSTEMS!");
+}
+
+function clearStats()
+{
+    alert("CLEAR STATS!");
+}
+
+function downloadLogs()
+{
+    alert("DOWNLOAD LOGS!");
 }
 
 class App extends Component {
@@ -206,7 +227,6 @@ class App extends Component {
         }
 
         this.setState(updatedState);
-        
     }
 
     //handleSubmit function used by button as a functionality test method for the updateValue function
@@ -216,20 +236,30 @@ class App extends Component {
 
     render() {
         return (
-            <div className="container">
-            	<br />
-                <br />
-            	<div className="title">
-                    Pod Health Viewer - UCLA Bruin HYPErloop
-                </div>
-                <br />
+            <div class="full-container">
+                <table class="container">
+                    <div class="logocolumn">
+                        <img src={hyperloop_logo} alt="Bruin Hyperloop"  width="348" height="80" />
+                    </div>
 
-                <div className="tableTitle">
+                    <div class="titlecolumn">
+                        <div class="title">
+                            Bruin Hyperloop Web Dashboard 
+                        </div>
+                    </div>
+
+                    <div class="logocolumn">
+                        <img src={TI_logo} alt="Texas Instruments" width="220" height="66" />
+                    </div>
+                </table>
+
+                <div class="tableTitle">
                     Battery
                 </div>
 
-                <table class="parent">
+                <table class="container">
                     <div class="labelcolumn">
+                        <br />
                         <LabelTable
                         tableLabel={this.state.labeltables[0].tableLabel}
                         labels={this.state.labeltables[0].labels}
@@ -244,6 +274,7 @@ class App extends Component {
                     </div>
 
                     <div class="pagecolumn">
+                        <br />
                         <Table
                         tableLabel={this.state.livetables[0].tableLabel}
                         minValues={this.state.livetables[0].minValues}
@@ -264,6 +295,10 @@ class App extends Component {
                     </div>
 
                     <div class="pagecolumn">
+                        <div class="tableSmallTitle">
+                            Statistics
+                        </div>
+
                         <OverallTable
                         values={this.state.overalltables[0].values}
                         bgColors={this.state.overalltables[0].bgColors}
@@ -280,12 +315,14 @@ class App extends Component {
 
                 <br />
 
-                <div className="tableTitle">
+                <div class="tableTitle">
                     Pod
                 </div>
 
-                <table class="parent">
+                <table class="container">
                     <div class="labelcolumn">
+                        <br />
+
                         <LabelTable
                         tableLabel={this.state.labeltables[2].tableLabel}
                         labels={this.state.labeltables[2].labels}
@@ -294,6 +331,8 @@ class App extends Component {
                     </div>
 
                     <div class="pagecolumn">
+                        <br />
+
                         <Table
                             labels={this.state.livetables[2].labels}
                             minValues={this.state.livetables[2].minValues}
@@ -304,11 +343,33 @@ class App extends Component {
                         />
                     </div>
                     <div class="pagecolumn">
+                        <div class="tableSmallTitle">
+                            Statistics
+                        </div>
+
                         <OverallTable
                             values={this.state.overalltables[2].values}
                             bgColors={this.state.overalltables[2].bgColors}
                             rows={5}
                         />
+                    </div>
+                </table>
+
+                <br />
+
+                <table class="container" height="140px">
+                    <div class="killButtonColumn">
+                        <button class="killButton" onClick={(i) => killSystem()}>KILL SWITCH</button>
+                    </div>
+
+                    <div class="statsButtonColumn">
+                        <div class="statsButtonContainer">
+                            <button class="clearStatsButton" onClick={(i) => clearStats()}>Clear Statistics</button>
+                        </div>
+
+                        <div class="statsButtonContainer">
+                            <button class="downloadLogsButton" onClick={(i) => downloadLogs()}>Download Logs</button>
+                        </div>
                     </div>
                 </table>
             </div>
