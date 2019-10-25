@@ -13,6 +13,7 @@
   },
   "scripts": {
     "web-server": "node WS_Server.js",
+    "startreact": "react-scripts start",
     "start": "concurrently \"react-scripts start\" \"npm run web-server\" ",
     "build": "react-scripts build",
     "test": "react-scripts test",

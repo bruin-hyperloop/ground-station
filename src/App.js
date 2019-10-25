@@ -231,7 +231,7 @@ class App extends Component {
 
     //handleSubmit function used by button as a functionality test method for the updateValue function
     handleSubmit(event) {
-        alert("ALERT!");
+        updateValue(0,1,56);
     }
 
     render() {

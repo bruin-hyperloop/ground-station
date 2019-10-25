@@ -1,6 +1,5 @@
 const io = require('socket.io')();
 
-
 var cur_d = 0;
 
 const bufEmitter = require('./Server'); 
